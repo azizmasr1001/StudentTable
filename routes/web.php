@@ -50,10 +50,24 @@ Route::group(['middleware' => 'auth'], function () {
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
 });
 */
-Route::get('/', function (){
+/*Route::get('/', function (){
     return view ('welcome');
-});
+});*/
 
 Route::get('admin/dashboard', function (){
     return view ('admin.dashboard');
 });
+
+Route::get('admin/admin/list', function (){
+    return view ('admin.admin.list');
+});
+
+Route::get('/', [AuthController::class, 'login']);
+Route::post('login', [AuthController::class, 'AuthLogin']);
+Route::get('logout', [AuthController::class, 'logout']);
+
+Route::get('/students/add', function () {
+    return view('students.formadd');
+});
+
+Route::resource('students',StudentsController::class);

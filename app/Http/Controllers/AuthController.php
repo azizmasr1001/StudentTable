@@ -29,27 +29,30 @@ class AuthController extends Controller
 
     public function login()
     {
-        return view('login');
+        if(!empty(Auth::check()))
+        {
+            return redirect('admin/dashboard');
+        }
+        return view('auth.login');
     }
 
-    public function loginPost(Request $request)
+    public function AuthLogin(Request $request)
     {
-        $credetials = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-
-        if (Auth::attempt($credetials)) {
-            return redirect('/home')->with('success', 'Login Success');
+        $remember = !empty ($request->remember) ? true : false;
+        if(Auth::attempt(['email' => $request->email, 'password' => $request->password], $remember))
+        {
+            return redirect('admin/dashboard');
         }
-
-        return back()->with('error', 'Error Email or Password');
+        else
+        {
+            return redirect ()->back()->with('error', 'Please input the correct email and password');
+        }
     }
 
     public function logout()
     {
         Auth::logout();
 
-        return redirect()->route('login');
+        return redirect(url(''));
     }
 }
