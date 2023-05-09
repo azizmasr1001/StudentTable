@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 /*Route::get('/', function () {
     return view('register');
-});*/
+});
 
 Route::get('/home', function () {
     return view('layout.home');
@@ -48,4 +48,12 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => 'auth'], function () {
     Route::get('layout.main', [HomeController::class, 'index']);
     Route::delete('/logout', [AuthController::class, 'logout'])->name('logout');
+});
+*/
+Route::get('/', function (){
+    return view ('welcome');
+});
+
+Route::get('admin/dashboard', function (){
+    return view ('admin.dashboard');
 });
