@@ -29,6 +29,16 @@
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
       </div>
     @endif
+    <div class="card-header">
+    <form method="get">
+        <div class="row mb-3">
+            <label for="search" class="col-sm-2 col-form-label ">Find Data</label>
+            <div class="col-sm-10">
+                <input type="text" class="form-control form-control-sm" value="{{ $search }}" placeholder="Please Input Key to search" name="search" autofocus>
+            </div>
+          </div>
+    </form>
+    </div>
     <div class="card-body">
       <div class="alert alert-info">
         <table class="table table-sm table-striped table-bordered ">
@@ -43,9 +53,13 @@
             <th>Option</th>
         </thead>
         <tbody>
+            @php
+                $number = 1+ (($students->currentPage()-1)*$students->perPage());
+            @endphp
             @foreach ($students as $row)
                 <tr>
-                    <th>{{ $loop->iteration }}</th>
+                    {{-- <th>{{ $loop->iteration }}</th> --}}
+                    <td>{{ $number++}}</td>
                     <td>{{ $row->idstudents }}</td>
                     <td>{{ $row->fullname }}</td>
                     <td>{{ $row->gender =='M' ?'Male': 'Female' }}</td>
@@ -70,6 +84,8 @@
             @endforeach
         </tbody>
         </table>
+        {{-- {{ $students->links() }} --}}
+        {!! $students->appends(Request::except('page'))->render() !!}
       </div>
 
     </div>
