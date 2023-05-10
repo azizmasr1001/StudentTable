@@ -11,37 +11,12 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="{{ url('') }}" class="nav-link">Home</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
-      </li>
     </ul>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
       <!-- Navbar Search -->
-      <li class="nav-item">
-        <a class="nav-link" data-widget="navbar-search" href="#" role="button">
-          <i class="fas fa-search"></i>
-        </a>
-        <div class="navbar-search-block">
-          <form class="form-inline">
-            <div class="input-group input-group-sm">
-              <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-              <div class="input-group-append">
-                <button class="btn btn-navbar" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-                <button class="btn btn-navbar" type="button" data-widget="navbar-search">
-                  <i class="fas fa-times"></i>
-                </button>
-              </div>
-            </div>
-          </form>
-        </div>
-      </li>
+
 
       <!-- Messages Dropdown Menu -->
       <li class="nav-item dropdown">
@@ -129,13 +104,8 @@
         </div>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="fullscreen" href="#" role="button">
-          <i class="fas fa-expand-arrows-alt"></i>
-        </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-th-large"></i>
+        <a class="nav-link btn btn-danger" href="{{ url('logout') }}" type="button" >
+         <i class="fas fa-arrow-right"></i>
         </a>
       </li>
     </ul>
@@ -147,7 +117,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
     <!-- Brand Logo -->
     <a href="{{ url('') }}" class="brand-link">
-      <img src="{{ url('dist/img/logo2.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <img src="{{ url('dist/img/logo3.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
       <span class="brand-text font-weight-light">King Aziz App</span>
     </a>
 
@@ -180,9 +150,10 @@
       <!-- Sidebar Menu -->
       <nav class="mt-2">
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <li class="nav-header">Main Menu</li>
+            @if(Auth::user()->user_type == 1)
+            <li class="nav-header">Main Menu</li>
           <li class="nav-item">
-            <a href="{{ url('admin/dashboard') }}" class="nav-link">
+            <a href="{{ url('admin/dashboard') }}" class="nav-link @if(Request::segment(2)=='dashboard') active @endif">
               <i class="nav-icon fas fa-rocket"></i>
               <p>
                 Dashboard
@@ -191,10 +162,30 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('admin/admin/list') }}" class="nav-link">
+            <a href="{{ url('admin/admin/list') }}" class="nav-link @if(Request::segment(2)=='admin') active @endif">
               <i class="nav-icon fas fa-key"></i>
               <p>
                 Admin List
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('students') }}" class="nav-link @if(Request::segment(1)=='students') active @endif">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Student
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+            @elseif(Auth::user()->user_type == 2)
+            <li class="nav-header">Main Menu</li>
+          <li class="nav-item">
+            <a href="{{ url('teacher/dashboard') }}" class="nav-link">
+              <i class="nav-icon fas fa-rocket"></i>
+              <p>
+                Dashboard
                 <span class="badge badge-info right"></span>
               </p>
             </a>
@@ -208,6 +199,18 @@
               </p>
             </a>
           </li>
+            @elseif(Auth::user()->user_type == 3)
+            <li class="nav-header">Main Menu</li>
+          <li class="nav-item">
+            <a href="{{ url('students') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Student
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+            @endif
 
         </ul>
       </nav>

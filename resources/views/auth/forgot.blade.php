@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin | Log IN</title>
+  <title>Admin | Forgot Password</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -22,10 +22,10 @@
       <a href="" class="h1"><img src="{{ url('dist/img/logo3.png')}}" class="img-circle elevation-2" alt="User Image" width='100'></a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+      <p class="login-box-msg">Enter Your email To retrive Your Password</p>
 
       @include('_messages')
-      <form action="{{ url('login') }}" method="post">
+      <form action="" method="post">
         @csrf
         <div class="input-group mb-3">
           <input type="email" class="form-control" name="email" placeholder="Email">
@@ -35,37 +35,18 @@
             </div>
           </div>
         </div>
-        <div class="input-group mb-3">
-          <input type="password" class="form-control" name="password" placeholder="Password">
-          <div class="input-group-append">
-            <div class="input-group-text">
-              <span class="fas fa-lock"></span>
-            </div>
-          </div>
-        </div>
         <div class="row">
-          <div class="col-8">
-            <div class="icheck-primary">
-              <input type="checkbox" name="remember" id="remember">
-              <label for="remember">
-                Remember Me
-              </label>
-            </div>
-          </div>
           <!-- /.col -->
           <div class="col-12">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+            <button type="submit" class="btn btn-primary btn-block">Forgot</button>
           </div>
           <!-- /.col -->
         </div>
       </form>
-      <div class="col-15">
-        <button type="submit" class="btn btn-danger btn-block">Back</button>
-      </div>
       <!-- /.social-auth-links -->
 
       <p class="mb-1">
-        <a href="{{ url('forgot-password') }}">I forgot my password</a>
+        <a href="{{ url('') }}">Login </a>
       </p>
     </div>
     <!-- /.card-body -->

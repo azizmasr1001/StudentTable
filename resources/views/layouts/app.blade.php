@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>King Aziz | App</title>
+  <title>{{ !empty($header_title) ? $header_title : '' }} - King Aziz</title>
 
   <!-- Css For Pagination-->
   <link rel="stylesheet" href="{{ url('dist/css/pagination.css') }}">
@@ -59,7 +59,7 @@
 <body class="hold-transition sidebar-mini">
 <div class="wrapper fixed-top">
     <div class="preloader flex-column justify-content-center align-items-center">
-        <img class="animation__shake" src="{{ url('dist/img/logo2.png') }}" alt="AdminLTELogo" height="60" width="60">
+        <img class="animation__shake" src="{{ url('dist/img/logo3.png') }}" alt="AdminLTELogo" height="60" width="60">
       </div>
   <!-- Navbar -->
   @include('layouts.header')
