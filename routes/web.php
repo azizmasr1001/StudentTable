@@ -54,20 +54,53 @@ Route::group(['middleware' => 'auth'], function () {
     return view ('welcome');
 });*/
 
-Route::get('admin/dashboard', function (){
-    return view ('admin.dashboard');
-});
 
-Route::get('admin/admin/list', function (){
-    return view ('admin.admin.list');
-});
+
+
 
 Route::get('/', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'AuthLogin']);
 Route::get('logout', [AuthController::class, 'logout']);
 
-Route::get('/students/add', function () {
-    return view('students.formadd');
+
+
+
+/** Admin Group */
+Route::group(['middleware'=>'admin'], function(){
+
+
+    Route::get('admin/dashboard', function (){
+        return view ('admin.dashboard');
+    });
+    Route::get('admin/admin/list', function (){
+    return view ('admin.admin.list');
+    });
+
+    Route::get('/students/add', function () {
+        return view('students.formadd');
+    });
+
+    Route::resource('students',StudentsController::class);
+
+
+
 });
 
-Route::resource('students',StudentsController::class);
+/** Teacher Group */
+Route::group(['middleware'=>'teacher'], function(){
+
+
+    Route::get('teacher/dashboard', function (){
+        return view ('admin.dashboard');
+    });
+
+});
+
+/** Teacher Group */
+Route::group(['middleware'=>'student'], function(){
+
+    Route::get('student/dashboard', function (){
+        return view ('admin.dashboard');
+    });
+
+});
