@@ -1,7 +1,11 @@
 
+    <!-- Back To Top Button-->
+    <div>
+        <a href="#" id="scroll-to-top"><i class="fas fa-arrow-up"></i></a>
+    </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top" >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -139,11 +143,12 @@
   <!-- /.navbar -->
 
   <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+  <div >
+  <aside class="main-sidebar sidebar-dark-primary elevation-4" style="position: fixed;">
     <!-- Brand Logo -->
     <a href="{{ url('') }}" class="brand-link">
       <img src="{{ url('dist/img/logo2.png') }}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+      <span class="brand-text font-weight-light">King Aziz App</span>
     </a>
 
     <!-- Sidebar -->
@@ -157,6 +162,8 @@
           <a href="#" class="d-block">Sulthan Rofi</a>
         </div>
       </div>
+
+
 
       <!-- SidebarSearch Form -->
       <div class="form-inline">
@@ -175,27 +182,47 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <li class="nav-header">Main Menu</li>
           <li class="nav-item">
+            <a href="{{ url('admin/dashboard') }}" class="nav-link">
+              <i class="nav-icon fas fa-rocket"></i>
+              <p>
+                Dashboard
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
             <a href="{{ url('admin/admin/list') }}" class="nav-link">
-              <i class="nav-icon fas fa-user-tie"></i>
+              <i class="nav-icon fas fa-key"></i>
               <p>
                 Admin List
                 <span class="badge badge-info right"></span>
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{ url('students') }}" class="nav-link">
+              <i class="nav-icon fas fa-users"></i>
+              <p>
+                Student
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+
         </ul>
       </nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
   </aside>
+  </div>
 
   <!-- Content Wrapper. Contains page content -->
 
   <!-- /.content-wrapper -->
 
   <!-- Control Sidebar -->
-  <aside class="control-sidebar control-sidebar-dark">
+  <aside class="control-sidebar control-sidebar-dark fixed-top">
     <!-- Control sidebar content goes here -->
   </aside>
   <!-- /.control-sidebar -->

@@ -1,0 +1,43 @@
+.pagination a {
+    color: rgb(0, 63, 254) !important;
+    text-decoration: none !important;
+  }
+
+  .pagination .active a {
+    color: red !important;
+    font-weight: bold !important;
+  }
+
+  .alert .btn-close {
+    font-size: 1.2em !important;
+    position: absolute !important;
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+    z-index: 2 !important;
+    padding: 0 !important;
+    line-height: 1 !important;
+    color: inherit !important;
+    opacity: 0.5 !important;
+    width: 1em;
+    height: 1.2em;
+  }
+
+  .btn-close i {
+    margin-right: 0.5em !important;
+    font-size: 1.2em !important;
+    line-height: 1;
+  }
+
+  .alert .btn-close:hover {
+
+    color: inherit !important;
+    opacity: 0.75 !important;
+  }
+
+  .alert .btn-close:focus {
+    outline: none !important;
+    box-shadow: none !important;
+    color: inherit !important;
+    opacity: 0.75 !important;
+  }
+

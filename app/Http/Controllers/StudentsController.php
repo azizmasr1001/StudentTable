@@ -20,10 +20,10 @@ class StudentsController extends Controller
         if(!empty($search)){
             $dataStudents = Students::where('students.idstudents','like','%'.$search. '%')
             ->orWhere('students.fullname','like','%'.$search. '%')
-            ->paginate(10)->onEachSide(2)->fragment('std');
+            ->paginate(20)->onEachSide(2)->fragment('std');
         }
         else{
-            $dataStudents = Students::paginate(10)->onEachSide(2)->fragment('std');
+            $dataStudents = Students::paginate(20)->onEachSide(2)->fragment('std');
         }
 
         return view('students.data')->with([
