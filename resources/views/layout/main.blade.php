@@ -13,39 +13,23 @@
     {{-- Nav --}}
     <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="{{ url('home') }}"><img src="{{ asset('logo/logo1.png') }}" width="70px"></a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-          data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <a class="navbar-brand" href="{{ url('/') }}"><img src="{{ asset('dist/img/logo3.png') }}" width="70px"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="collapse navbar-collapse justify-content-end" id="navbarNav"> <!-- Add justify-content-end class here -->
             <ul class="navbar-nav">
               <li class="nav-item">
-                <a class="nav-link {{ (request()-> segment('1')=='' || request()-> segment('1')=='home') ?
-                'active' : '' }}" aria-current="page" href="{{ url('home') }}">
-                    <i class="fas fa-star"></i> Home
-                </a>
+                <a href="{{ url('login') }}" class="btn btn-success ml-lg-2"><i class="fas fa-sign-in-alt"></i> Log In</a> <!-- Add classes here -->
               </li>
-              <li class="nav-item">
-                <a class="nav-link {{ (request()-> segment('1')=='students') ?
-                  'active' : '' }}" aria-current="page" href="{{ url('students') }}">
-                    <i class="fas fa-user"></i> Student
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{ url('/calculator') }} " aria-current="page">
-                    <i class="fas fa-calculator"></i> Calculator
-                </a>
-              </li>
-              <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
-                @csrf
-                @method('DELETE')
-                <button class="btn btn-danger" type="submit">Logout</button>
-            </form>
             </ul>
           </div>
         </div>
       </nav>
+
+
+
+
       {{-- Nav --}}
 
       {{-- content --}}

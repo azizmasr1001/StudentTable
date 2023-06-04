@@ -5,7 +5,7 @@
     </div>
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light fixed-top" >
+  <nav class="main-header navbar navbar-expand navbar-white navbar-light" >
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">
@@ -175,6 +175,15 @@
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Student
+                <span class="badge badge-info right"></span>
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{ url('/chatbot') }}" class="nav-link @if(Request::segment(1)=='students') active @endif">
+              <i class="nav-icon fas fa-comment"></i>
+              <p>
+                Chatbot
                 <span class="badge badge-info right"></span>
               </p>
             </a>

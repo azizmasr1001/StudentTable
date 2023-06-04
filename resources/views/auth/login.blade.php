@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin | Log IN</title>
+  <link rel="icon" type="image" href="{{ url('dist/img/logo3.png')}}">
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -60,7 +61,7 @@
         </div>
       </form>
       <div class="col-15">
-        <button type="submit" class="btn btn-danger btn-block">Back</button>
+        <button type="button" class="btn btn-danger btn-block" onclick="window.location.href='/'">Back</button>
       </div>
       <!-- /.social-auth-links -->
 

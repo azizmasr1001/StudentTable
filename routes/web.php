@@ -5,6 +5,9 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ChatBotController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -56,10 +59,12 @@ Route::group(['middleware' => 'auth'], function () {
 });*/
 
 
+Route::get('/', function (){
+    return view ('layout.home');
+});
 
 
-
-Route::get('/', [AuthController::class, 'login']);
+Route::get('/login', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'AuthLogin']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::get('forgot-password', [AuthController::class, 'forgotpassword']);
@@ -67,14 +72,17 @@ Route::post('forgot-password', [AuthController::class, 'PostForgotPassword']);
 Route::get('reset/{token}', [AuthController::class, 'reset']);
 Route::post('reset/{token}', [AuthController::class, 'PostReset']);
 
+Route::get('/chatbot', function () {
+    return view('chatbot.chatbot');
+});
+Route::post('send',[ChatBotController::class, 'sendChat']);
+
 /** Admin Group */
 Route::group(['middleware'=>'admin'], function(){
 
     Route::get('admin/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('admin/admin/list', [AdminController::class, 'list']);
 
-    Route::get('admin/admin/list', function (){
-    return view ('admin.admin.list');
-    });
 
     Route::get('/students/add', function () {
         return view('students.formadd');
